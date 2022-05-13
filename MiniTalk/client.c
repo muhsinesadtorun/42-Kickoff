@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include "libft/libft.h"
-
+#include <stdio.h>
 static void	action(int sig)
 {
 	static int	received = 0;
@@ -29,9 +29,15 @@ static void	mt_kill(int pid, char *str)
 		while (i--)
 		{
 			if (c >> i & 1)
+			{
+				printf("1");
 				kill(pid, SIGUSR2);
+			}
 			else
+			{
+				printf("0");
 				kill(pid, SIGUSR1);
+			}
 			usleep(100);
 		}
 	}
